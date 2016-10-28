@@ -1,0 +1,26 @@
+1)  In this class we will use Red Hat Enterprise Linux, is this a Linux or a Unix?  
+     Is Red Hat likely to be around for the next five years?  Why or why not?
+
+Red Hat Enterprise is a Linux distribution. 
+Red Hat will definitely be around in five years because it is reliable, slow-changing, and commercial.
+
+2) What command would you use to install a package on Red Hat?
+
+yum install <software name>
+
+3) What command could you use to search for a package on Red Hat?
+
+$ whereis <thing>  #searches a broader range of system directories
+or
+locate <thing you want to find> #searches a precompiled index of the filesystem.
+
+4) What command would you use to see if a package is already installed on Red Hat?
+
+$ which <thing>  
+
+5) What command would you use to look up the manual page for a utility or package?
+
+man <thing>
+
+# if you add additional man pages to your Red Hat system, you may need to 
+# rebuild the man pages with the command "makewhatis"
