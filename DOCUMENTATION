@@ -1,0 +1,18 @@
+The purpose of this file is to document processes for NTI300 assignments.
+=================================
+
+This is the assignment:
+Script Apache install and website creation:
+Create a bash script 
+(hint, you can use https://github.com/nic-instruction/NTI-300/blob/master/install_scripts/install-apache (Links to an external site.) as a base)
+that installs enables and starts apache
+Then adds a static HTML page to the apache server.  
+For extra credit, automate adding a second page that is gated by an .htaccess file and permissions for two users to view it.
+After you have added these new files, automatically restart or reload apache.
+
+-----------------------------------
+These are the steps:
+
+Use Nicole's script: https://github.com/nic-instruction/NTI-300/blob/master/install_scripts/install-apache
+Create index.html with a basic html template
+//add more later
