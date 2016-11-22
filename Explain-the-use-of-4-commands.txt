@@ -1,0 +1,93 @@
+Here is an assignment to research and explain the use of four *nix commands   
+for basic shell programming (Learning the Bash Shell text)
+===============
+
+
+TO RUN A BASH SCRIPT:
+$ source <scriptname>  
+Or simply type the scriptname and hit RETURN.
+
+
+NOTE: If the script isn't in your command search path, 
+you must type ./scriptname (which is the same
+  	as typing the script’s absolute pathname)
+
+
+NOTE: You must give your script execute permission explicitly to run it.  Otherwise, you will get a message of <scriptname>: Permission denied
+
+
+	NOTE: Typing in the name of the script and hitting RETURN does the following:
+		1. It causes the shell to run another copy of the shell as a subprocess,
+			known as a subshell.
+		2. The subshell then takes commands from the script, runs them, and 
+terminates, handing control back to the parent shell.
+3. While all of this is happening, you have to wait until the process is
+finished before you can enter further commands.
+
+
+NOTE: Using source to run the script causes the commands in the script to be run as if they were a part of your login session.
+	
+
+
+TO GIVE A SCRIPT EXECUTE PERMISSION:
+	$ chmod +x  <scriptname>
+
+
+
+
+TO MAKE A COMMAND RUN IN THE BACKGROUND:
+	$ <command> &
+
+
+	NOTE:  Running a command in the background allows you to enter further commands
+		in the terminal while the background command is being processed.
+
+
+TO DEFINE A BASH FUNCTION:			
+					
+function <functname>
+{
+	shell commands
+} 
+
+
+OR 
+
+
+<functname>
+()
+{
+shell commands
+}	
+
+
+	
+			
+TO FIND OUT WHAT FUNCTIONS ARE DEFINED IN YOUR LOGIN SESSION”
+$ declare -f
+
+
+$ declare -F
+
+
+
+
+TO KNOW THE EXACT SOURCE OF A COMMAND:
+$ type
+$ type -all
+$ type -p (for executables)
+$ type -P (for executables)
+$ type -f (suppresses shell function lookup, so only keywords, files, and 
+aliases are returned)		
+	$ type -t (restricts definition to a single word descriptor, e.g. alias, keyword, etc.)
+
+
+
+
+TO DEFINE VALUES FOR BASH VARIABLES:
+	$ <varname>=<value>
+
+
+	NOTE:  You can’t place a space on either side of the equal sign. The assignment won’t 
+		work.
+
