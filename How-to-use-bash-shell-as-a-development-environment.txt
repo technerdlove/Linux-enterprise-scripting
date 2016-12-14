@@ -1,4 +1,26 @@
 Here I describe how to use the bash shell as a development environment.
+There are three (3) sections:
+THE PROCESS FOR TRYING NEW COMMANDS
+THE PROCESS FOR TESTING NEW COMMANDS
+THE PROCESS FOR SAVING NEW COMMANDS AS SCRIPTS
+
+TL;DR
+In summary:
+  1. Using the command line, develop a script by creating a pipeline that does something as a series of steps. 
+     Remember, one step at a time. 
+  2. Send output to standard output to check to ensure that everything looks right. 
+  3. At each step: 
+     a. Use the shell's command history to recall pipelines
+     b.  Use the shell's editing features to tweak them
+  4. If the output does NOT look right, nothing has been done, so there's nothing to undo if the
+     command is incorrect.
+  5.  Once the output is correct, go ahead and execute the command for real.  Verify that
+      they worked as you intended. 
+  6.  Use the command $ fc transfer the command pipeline to the editor of your choice.
+      a. Add the shebang line and a usage comment
+      b. Write the file to a good location, e.g. ~/bin or /usr/local/bin
+      c. Make the file executable
+  7.  Now you have a script.
 
 THE PROCESS FOR TRYING NEW COMMANDS:
 
@@ -81,23 +103,6 @@ Use $ | tee:
   This is especially helpful when you are piping a lot of commands together; at the end of the pipeline type
   the tee command.  You can preview the initial results, then leave while the command runs knowing that 
   the results will be saved to a file. 
-
-In summary:
-  1. Using the command line, develop a script by creating a pipeline that does something as a series of steps. 
-     Remember, one step at a time. 
-  2. Send output to standard output to check to ensure that everything looks right. 
-  3. At each step: 
-     a. Use the shell's command history to recall pipelines
-     b.  Use the shell's editing features to tweak them
-  4. If the output does NOT look right, nothing has been done, so there's nothing to undo if the
-     command is incorrect.
-  5.  Once the output is correct, go ahead and execute the command for real.  Verify that
-      they worked as you intended. 
-  6.  Use the command $ fc transfer the command pipeline to the editor of your choice.
-      a. Add the shebang line and a usage comment
-      b. Write the file to a good location, e.g. ~/bin or /usr/local/bin
-      c. Make the file executable
-  7.  Now you have a script.
 
 
 THE PROCESS FOR SAVING NEW COMMANDS AS SCRIPTS:
