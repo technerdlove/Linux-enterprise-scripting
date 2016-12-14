@@ -115,6 +115,10 @@ Ensure that the first line of each script is the "shebang" statement:
 
 This tells the kernel to execute the file as a script for interpretation by /bin/bash
 
+It's good form to enter a clear and concise comment about what the script does.
+Create a comment by entering # :
+  # This is rad
+
 Enter your commands as a bash script
 
 Then save the script in vi by performing the following steps:
@@ -149,3 +153,4 @@ apply only to the current shell.
 It's commonly used in scripting to incorporate the contents of a configuration file written as a series
 of bash variable assignments. 
 
+###
