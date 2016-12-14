@@ -1,0 +1,146 @@
+Here I describe how to use the bash shell as a development environment.
+
+THE PROCESS FOR TRYING NEW COMMANDS:
+
+Set your command-line editor.  Vi is used here as an example:
+$ set -o vi
+
+For editing in vi:
+<Esc> : leaves input mode
+i : reenters input mode
+w : go forward one word
+fX: find the next "X" in the line
+
+Assigning variables:
+$ etcdir='/etc'
+
+Don't put spaces around the equal sign (=) or the shell will think that your variable name
+is a command.
+
+To reference a variable:
+$ echo $etcdir
+
+A more human-readable way to reference a variable in the command line:
+$ echo ${etcdir}
+
+The human-readable way is helpful when the variable is within quotes:
+$ echo "Saved ${rev}th version of mdadm.conf."
+Saved 8th version of mdadm.conf.
+
+Variable naming conventions:
+Use all caps for environmental variables or variables read from global configuration files
+
+Use lower-case with components separated by underscores for local variables
+
+Variable names are case-sensitive
+
+Environmental variables:
+  Environmental variables are automatically imported into bash's variable namespace.
+
+  Use export <varname> to promote a shell variable to an environmental variable.
+
+  You can find your commands for the environmental variables that you set up at login time here:
+    ~/.profile
+    or
+    ~/.bash_profile
+
+
+Strings:
+  Double quotes can be used with variable expansion and globbing:
+     This is variable expansion:
+      $ ml = "your mom"
+      $ echo "What person is better than ${ml}?"
+        What person is better than your mom?
+      $ echo 'What person is better than ${ml}?'
+        What person is better than ${ml}?
+ 
+     Globbing is when you expand the filename by using matching metacharacters
+     like * and ?
+
+   Back quotes (back ticks)  are treated like double quotes, but they also can be used to
+   execute a shell command within a string:
+     $ echo "There were `wc -l /etc/passwdx` lines in the passwd file/"
+     There were 28 lines in the passwd file.
+ 
+THE PROCESS FOR TESTING NEW COMMANDS:
+
+Use $ echo :
+  For simple commands only that don't move files or do anything of consequence.
+  I.e. use for commands that just print stuff
+
+Use $ | bash -x :
+  Piping to a separate instance of bash tests the command in a safe environment (no consequence if 
+  there are errors)
+   
+  The -x option to bash prints each command before executing it.
+
+Use $ | tee:
+
+  Tee sends its standard input to both standard output and to a file you specify on 
+  the command line.
+  This is especially helpful when you are piping a lot of commands together; at the end of the pipeline type
+  the tee command.  You can preview the initial results, then leave while the command runs knowing that 
+  the results will be saved to a file. 
+
+In summary:
+  1. Using the command line, develop a script by creating a pipeline that does something as a series of steps. 
+     Remember, one step at a time. 
+  2. Send output to standard output to check to ensure that everything looks right. 
+  3. At each step: 
+     a. Use the shell's command history to recall pipelines
+     b.  Use the shell's editing features to tweak them
+  4. If the output does NOT look right, nothing has been done, so there's nothing to undo if the
+     command is incorrect.
+  5.  Once the output is correct, go ahead and execute the command for real.  Verify that
+      they worked as you intended. 
+  6.  Use the command $ fc transfer the command pipeline to the editor of your choice.
+      a. Add the shebang line and a usage comment
+      b. Write the file to a good location, e.g. ~/bin or /usr/local/bin
+      c. Make the file executable
+  7.  Now you have a script.
+
+
+THE PROCESS FOR SAVING NEW COMMANDS AS SCRIPTS:
+
+The primary purpose of bash scripting is to automate things that you would otherwise type on the command line. 
+Keep in mind that if your bash script is more than 100 lines, you should write the script in Python or Perl. 
+
+Ensure that the first line of each script is the "shebang" statement:
+#!/bin/bash
+
+This tells the kernel to execute the file as a script for interpretation by /bin/bash
+
+Enter your commands as a bash script
+
+Then save the script in vi by performing the following steps:
+1. place .sh at the end of the file name to identify the file as a script. It's not necessary
+to do this to run the script, it's just helpful to help you the human understand that the file is a script.
+
+Exit the text editor
+
+When you've returned to the command line:
+First, prepare the bash file for running by turning on its execute bit:
+$ chmod +x <filename>
+
+Run the script using the following command (<filename> is the name of your bash script):
+$ ./<filename>
+
+Your script should NOT be able to execute by just typing the filename.  If it does it means that the current
+directory is in your search path. This means that users with bad intentions can lay a trap for you in
+the hopes that you execute certain commands while in a directory on which they have write access. 
+
+You can also run the script by typing the following to invoke the shell as an interpreter directly:
+$ bash <filename>
+
+The above method runs the file in a new instance of bash
+
+You can also run the script by typing the following:
+
+$ source <filename>
+
+This method makes your existing login shell read and execute the contents of the file
+Use this method if the script sets up environmental variables or other customizations that 
+apply only to the current shell.
+It's commonly used in scripting to incorporate the contents of a configuration file written as a series
+of bash variable assignments. 
+
