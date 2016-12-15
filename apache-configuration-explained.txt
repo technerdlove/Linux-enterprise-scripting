@@ -1,6 +1,7 @@
 Here I use Lynda.com and Wikipedia to explain the apache module and mod-wsgi as they pertain to apache configuration.
 
 WHAT IS AN APACHE MODULE?
+
 Httpd is modular, meaning it consist of a system of plugins that add specific functionality. 
 Apache comes with a default set of modules that are included upon compilation. 
 Static modules are compiled into the httpd and are loaded every time Apache is started. 
@@ -14,6 +15,7 @@ To prevent that situation, it's possible to wrap module specific configuration i
 For example, IfModule mod_ssl, will only run if the mod_ssl module was enabled.
 
 WHAT DOES MOD-WSGI DO?
+
 mod_wsgi is an Apache HTTP Server module by Graham Dumpleton that provides a WSGI compliant interface for hosting Python based web applications under Apache. 
 The Web Server Gateway Interface (WSGI) is a specification for simple and universal interface between web servers and web applications or frameworks for the Python programming language.
 It has been adopted as a standard for Python web application development. 
