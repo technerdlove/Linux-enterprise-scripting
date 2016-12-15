@@ -1,0 +1,96 @@
+ Here I use The Hitchhiker's Guide to Python System Administration as an overview of 
+ existing python libraries for systems administration.
+ http://docs.python-guide.org/en/latest/scenarios/admin/
+
+ OVERVIEW OF EXISTING PYTHON LIBRARIES FOR SYSTEMS ADMINISTRATION:
+ Fabric
+ Salt
+ Chef
+ Puppet
+ Ansible
+ Psutil
+ Shinken
+ Buildout
+ 
+ 
+ 
+ FABRIC
+ Fabric is a library for simplifying system administration tasks. 
+ While Chef and Puppet tend to focus on managing servers and system libraries, Fabric is more focused on application level tasks such as deployment.
+ 
+ To install Fabric:
+ $ pip install fabric
+ 
+ To deploy code in Fabric:
+ $ fab deploy
+ 
+ SALT
+ Salt is an open source infrastructure management tool. 
+ It supports remote command execution from a central point (master host) to multiple hosts (minions). 
+ It also supports system states which can be used to configure multiple servers using simple template files.
+ Salt also provides a state system. 
+ States can be used to configure the minion hosts.
+ 
+ To install Salt:
+ $ pip install salt
+
+ CHEF 
+ Chef is a systems and cloud infrastructure automation framework that makes it easy to deploy servers and applications to any physical, virtual, or cloud location. 
+ It uses the programming language Ruby to write infrastructure code.
+ Chef clients run on every server that is part of your infrastructure and these regularly check with your Chef server to ensure your system is always aligned and represents the desired state. 
+ Since each individual server has its own distinct Chef client, each server configures itself and this distributed approach makes Chef a scalable automation platform.
+Chef works by using custom recipes (configuration elements), implemented in cookbooks. 
+Cookbooks, which are basically packages for infrastructure choices, are usually stored in your Chef server. 
+
+To create a simple cookbook:
+$ knife cookbook create cookbook_name
+
+To learn Chef:
+https://www.digitalocean.com/community/tutorials/how-to-install-a-chef-server-workstation-and-client-on-ubuntu-vps-instances
+http://gettingstartedwithchef.com/first-steps-with-chef.html
+https://supermarket.chef.io/cookbooks
+ 
+ PUPPET
+ Puppet is IT Automation and configuration management software from Puppet Labs that allows System Administrators to define the state of their IT Infrastructure.
+ It provides an elegant way to manage a fleet of physical and virtual machines.
+  Puppet Forge is a repository for modules written by the community for Open Source and Enterprise Puppet.
+  https://forge.puppetlabs.com/
+  
+  Facter is an interesting tool that ships with Puppet that pulls basic facts about the system. These facts can be referenced as a variable while writing your Puppet modules:
+$ facter kernel
+Linux
+$ facter operatingsystem
+Ubuntu
+ 
+ PSUTIL
+ Psutil is an interface to different system information (e.g. CPU, memory, disks, network, users and processes).
+ A full terminal application like a widely extended top which is 
+ based on psutil and with the ability of a client-server monitoring is glance: https://github.com/nicolargo/glances/
+
+ ANSIBLE
+ Ansible is an open source system automation tool. 
+ The biggest advantage over Puppet or Chef is it does not require an agent on the client machine. 
+ Playbooks are Ansible’s configuration, deployment, and orchestration language and are written in YAML with Jinja2 for templating.
+ 
+ To install Ansible:
+ $ pip install ansible
+ 
+ To run a playbook in Ansible:
+ $ ansible-playbook <nameofplaybook.yml> <flag> <nameoffile.yml> --ask-pass
+ The Ansible playbook will do what it's supposed to do in the nameoffile.yml file. 
+ You can also select groups of servers using Ansible. 
+ 
+ An Ansible tutorial is also a great and detailed introduction to getting started with Ansible:
+ https://serversforhackers.com/an-ansible-tutorial/
+ 
+
+ BUILDOUT
+ Buildout is an open source software build tool. 
+ Buildout is created using the Python programming language. 
+ It implements a principle of separation of configuration from the scripts that do the setting up. 
+ Buildout is primarily used to download and set up dependencies in Python eggs format of the software being developed or deployed.   Recipes for build tasks in any environment can be created, and many are already available.
+ 
+ SHINKEN
+ Shinken is a modern, Nagios compatible monitoring framework written in Python. 
+ Its main goal is to give users a flexible architecture for their monitoring system that is designed to scale to large environments.
+ It works on any operating system, and architecture that supports Python
