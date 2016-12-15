@@ -12,16 +12,11 @@
 #DESCRIPTION OF ASSIGNMENT:
 #Your script should be croned to run once an hour and email you if there is no activity on your server and no one logged in.
 
-# run the backup scripts at 4:30am
-#30 4 * * * /var/www/devdaily.com/bin/create-all-backups.sh
-#0 * * * * ~/NTI300/NTI300-assignments/check-apache-server.sh > /dev/null  2>&1
-#/home/ec2-user/check.sh | /usr/bin/mail nicole.bade@seattlecolleges.edu
-
 #HERE IS THE SCRIPT FOR THIS FILE OF THE ASSIGNMENT:
 # open cron file on server 
 crontab -e
 # run the check apache server script from GitHub local repository at every hour of every day.
-# any ouput is piped to mail Annmarie at viridityforever@gmail.com
+# any ouput is piped to mail viridityforever@gmail.com
 0 * * * * /home/ec2-user/NTI300/NTI300-assignments/check-apache-server.sh | /usr/bin/mail viridityforever@gmail.com
 
 
