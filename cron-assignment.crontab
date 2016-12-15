@@ -1,0 +1,24 @@
+#!/bin/bash 
+#THIS IS FILE 2 OF A 2-FILE CRON JOB 
+#FILE 1 IS A SCRIPT THAT CHECKS THE SERVER EVERY HOUR AND EMAILS YOU IF NO ONE LOGGED IN: check-apache-server.sh
+#FILE 2 CREATES A CRONTAB TO ACCESS THE SCRIPT IN FILE 1 : cron-assignment.crontab
+
+#FYI:
+#The cron daemon is a long-running process that executes commands at specific dates and times. 
+#You can use this to schedule activities, either as one-time events or as recurring tasks.
+#For commands that need to be executed repeatedly (e.g., hourly, daily, or weekly), you can use the crontab command. 
+#The crontab command creates a crontab file containing commands and instructions for the cron daemon to execute.
+
+#DESCRIPTION OF ASSIGNMENT:
+#Your script should be croned to run once an hour and email you if there is no activity on your server and no one logged in.
+
+# run the backup scripts at 4:30am
+#30 4 * * * /var/www/devdaily.com/bin/create-all-backups.sh
+
+#HERE IS THE SCRIPT FOR THIS FILE OF THE ASSIGNMENT:
+# open cron file on server 
+crontab -e
+# run the check apache server script at every hour of every day.
+# any ouput is written to /dev/null so you never have to see the output
+0 * * * * ~/NTI300/NTI300-assignments/check-apache-server.sh > /dev/null  2>&1
+
