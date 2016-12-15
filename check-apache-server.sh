@@ -17,9 +17,11 @@
 #crontab -l
 #number of users logged in is $users
 users=$( /usr/bin/who | grep -c "" )
+#count the number of apache users (1 if apache is up, 2 if not), store as $apachestatus
 apachestatus=$( ps auxw | grep apache | grep -c "")
 if [ "$apachestatus" -eq "0" && "$users" -lt "1" ]
 then
-        echo “ Yikes, server down! The aws apache server with ip address @54.86.131.96 is DOWN. Also, there isn't anyone logged on to the server. Put on your cape and fix it! ”
+        echo “ Yikes, server down! The aws apache server with ip address @54.86.131.96 is DOWN. Also, there no one is logged on to the server. Put on your cape and fix it! ”
+       #Echo “This is a message” | mail -s “This is a subject” youremail@example.com
 fi
 #chmod +x
