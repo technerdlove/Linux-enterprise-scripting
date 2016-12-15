@@ -2,7 +2,8 @@ Here I use Lynda.com and Wikipedia to explain the apache module and mod-wsgi as 
 
 WHAT IS AN APACHE MODULE?
 
-Httpd is modular, meaning it consist of a system of plugins that add specific functionality. 
+The Apache HyperText Transfer Protocol (HTTP) server program is named httpd.
+Httpd is modular, meaning it consists of a system of plugins that add specific functionality. 
 Apache comes with a default set of modules that are included upon compilation. 
 Static modules are compiled into the httpd and are loaded every time Apache is started. 
 Shared modules on the other hand, can be added without recompiling the core configuration. 
