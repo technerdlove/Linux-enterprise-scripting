@@ -1,0 +1,26 @@
+Here I complete the following assignment:
+We will analyze the bug found in the linux kernel and come up with a plan for patching our systems.  
+This should only take a half hour or so of class time.  
+To complete this assignment, submit the names of the machines you patched and the commands you used to do so, 
+along with an estimated cost for spinning up each machine.
+
+MACHINES PATCHED
+Only had one instance running
+
+COMMANDS TO PATCH MACHINES (AS A STEP-BY-STEP GUIDE)
+1.  Make a file named my_machines
+2. Enter a list of your ip addresses in file my_machines
+   Note: To find aws server ip addresses, go to management console and copy and paste public ip
+3. Create a bash script with the following lines:
+
+cat my_machines
+
+for i in $( cat my_machines ); do ssh -t -i “load-ballancer-static-content.pem” ec2-user@$i “sudo yum clean al && sudo yum update kernel && sudo reboot”; done
+# replace oad-ballancer-static-content.pem with the name of your key
+
+4. Save and close script
+5. On command line, make script executable by typing chmod +x nameofyourpatchscript
+6. Run script 
+
+ESTIMATED COST
+miniscule
