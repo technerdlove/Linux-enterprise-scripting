@@ -15,3 +15,7 @@ echo "If you open the security settings for port 80 on your server, you should s
 #saved the  home directory of the user
 echo "add static HTML page to apache server"
 sudo sh -c 'cat landingpage.html > /var/www/html/landingpage.html'
+
+#restart apache server
+echo "restarting apache server"
+sudo service httpd restart
