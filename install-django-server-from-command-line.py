@@ -31,8 +31,8 @@ def launch_test_instance():
 	# The purpose of this script is to configure and install a django server without needing to enter sudo
 
 	# This first line is very important.  You should import os first because of the numerous system calls in the script.
-	import os
-	def install_apache():
+import os
+def install_apache():
 	       print('installing apache server')
 	       os.system('sudo yum -y install httpd')
 	       print('enabling apache server')
@@ -40,13 +40,13 @@ def launch_test_instance():
 	       print('starting apache server')
 	       os.system('sudo systemctl start httpd.service')
 	       print('If you open the security settings for port 80 on your server, you should see the apache start page')
-	install_apache()
+install_apache()
 
-	# Here the script installs the django server with python and virtualenv
-	def install_django():
+# Here the script installs the django server with python and virtualenv
+def install_django():
 		print('installing django')
-	install_django()
-	def install_pip():
+install_django()
+def install_pip():
 		os.system('yum -y install python-pip')
 		print('installing python-pip')
 	install_pip()
