@@ -96,10 +96,10 @@ def launch_test_instance():
 	def verifying_dirty_cow():
 		os.system('rpm -q --changelog kernel | grep CVE-2016-5195')
 	
-
+	"""
 	)
-"""
-pprint.pprint(instances)
+
+#pprint.pprint(instances)
 
 
 launch_test_instance()
