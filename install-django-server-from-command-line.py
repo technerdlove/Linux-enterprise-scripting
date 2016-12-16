@@ -1,12 +1,14 @@
 #!/usr/bin/python
 # The purpose of this script is to configure and install a django server without needing to enter sudo
+
+# This first line is very important.  You should import os first because of the numerous system calls in the script.
 import os
 def install_apache():
-       print("installing apache server")
+       print('installing apache server')
        os.system('sudo yum -y install httpd')
-       print("enabling apache server")
+       print('enabling apache server')
        os.system('sudo systemctl enable httpd.service')
-       print("starting apache server")
+       print('starting apache server')
        os.system('sudo systemctl start httpd.service')
        print('please you open the security settings for port 80 on your server, you should see the apache start page')
 install_apache()
@@ -41,13 +43,11 @@ def activate_virtualenv():
 activate_virtualenv()
 
 # This installs git and the tree package that belongs with git
-import os
 def install_git():
 	print('installing git')
 	os.system('yum -y install git')
-	os.system('git clone https://github.com/fjemal/NTI-300-repository')
+	os.system('git clone https://github.com/viridtyforever/NTI300-assignments')
 install_git()
-import os
 def install(package):
 	print('installing package')
 	os.system('yum -y install '+package)
