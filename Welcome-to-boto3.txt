@@ -1,0 +1,24 @@
+Here I complete the following assignment using great information from http://aspg.com/10-tips-for-securing-encryption-keys/#.WFNH6lUrK00
+Write a paragraph about how you will store your configuration and key information securely.
+
+HOW TO KEEP KEYS AND CONFIG FILES SAFE
+
+TL:DR
+Don't ever put keys in source control
+A key is like a romantic relationship: 
+protect the relationship until it's time to move on, then make a clean break and start over.
+
+
+Physically secure encryption systems: The machines and systems that run encryption programs and store the encryption keys should be physically secured with locked doors and other appropriate measures. Access ought be granted to those with adequate knowledge and integrity.
+
+Do not store encryption keys with the data they decrypt: Encryption keys should be stored on separate machines from the data they are used to unlock. When they are both located on the same machine, if that machine is compromised so also are the keys.
+
+Have an audit trail: Audit logs show who has accessed what data and when. This information can prevent keys from becoming compromised and provide crucial information about the compromise if there is a data breach.
+
+Maintain a secure and frequently updated off-site backup of encryption keys: Having all your encryption keys locked up and on one secure machine does no good if that machine fails. If all the keys are lost in a drive failure, the encrypted data will become inaccessible.
+
+Manage encryption key life-cycle: The most secure encryption keys are set to expire after a predetermined time period. No matter how well secured these encryption keys are, if they expire without a new key being issued, saved, backed up, and secured, the keys will be useless.
+Encrypt keys as another layer of security: Encryption works great for securing your data. Why not use it to secure your keys?
+
+Make it possible to change keys periodically: Changing keys in the case of a data breach is a necessary precaution. The ability to change keys periodically can also prevent unauthorized access if keys were unknowingly accessed.
+Have a key recovery procedure: Accidental data loss is nearly an inevitable occurrence in computing. Keys will be compromised. Making sure there is a secure procedure for recovering lost keys will guarantee that data will be accessible.
