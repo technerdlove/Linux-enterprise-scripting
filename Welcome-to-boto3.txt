@@ -5,9 +5,10 @@ HOW TO KEEP KEYS AND CONFIG FILES SAFE
 
 TL:DR
 Don't ever put keys in source control
+Pem keys are usually stored in databases. Do a lookup
 A key is like a romantic relationship: 
 protect the relationship until it's time to move on, then make a clean break and start over.
-
+===========
 
 Physically secure encryption systems: The machines and systems that run encryption programs and store the encryption keys should be physically secured with locked doors and other appropriate measures. Access ought be granted to those with adequate knowledge and integrity.
 
