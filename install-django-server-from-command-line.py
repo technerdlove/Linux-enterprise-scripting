@@ -28,9 +28,9 @@ def launch_test_instance():
       UserData="""#!/usr/bin/python
 
 
-	# The purpose of this script is to configure and install a django server without needing to enter sudo
+# The purpose of this script is to configure and install a django server without needing to enter sudo
 
-	# This first line is very important.  You should import os first because of the numerous system calls in the script.
+# This first line is very important.  You should import os first because of the numerous system calls in the script.
 import os
 def install_apache():
 	       print('installing apache server')
@@ -49,16 +49,16 @@ install_django()
 def install_pip():
 		os.system('yum -y install python-pip')
 		print('installing python-pip')
-	install_pip()
-	def install_virtualenv():
+install_pip()
+def install_virtualenv():
 		os.system('cd /opt')
 		os.system('pip install virtualenv')
 		os.system('virtualenv django-env')
 		print('installing virtual-env')
-	install_virtualenv()
+install_virtualenv()
 
-	# Here the script activates the django server
-	def activate_virtualenv():
+# Here the script activates the django server
+def activate_virtualenv():
 		os.system('source /opt/django/django-env/bin/activate')
 		os.system('which python')
 		os.system('pip install django')
@@ -69,31 +69,31 @@ def install_pip():
 		print('installing django')
 		os.system('python /opt/django/project1/ manage.py runserver 0.0.0.0:8000&')
 		print('done')
-	activate_virtualenv()
+activate_virtualenv()
 
-	# This installs git and the tree package that belongs with git
-	def install_git():
+# This installs git and the tree package that belongs with git
+def install_git():
 		print('installing git')
 		os.system('yum -y install git')
 		os.system('git clone https://github.com/viridtyforever/NTI300-assignments')
-	install_git()
-	def install(package):
+install_git()
+def install(package):
 		print('installing package')
 		os.system('yum -y install '+package)
-	install('tree')
+install('tree')
 
-	# This installs the email service
-	def mailx():
+# This installs the email service
+def mailx():
 		print('installing mailx')
 		os.system('yum -y install mailx')
-	mailx()
+mailx()
 
-	# This installs security patches - specifically the dirty cow patch
-	#  This is just for notes - WILL NOT CALL IN SCRIPT FOR TESTING. REBOOTS SERVER, BUT FOR TEST WE WANT SERVER DEPLOYED
-	def kernel():
+# This installs security patches - specifically the dirty cow patch
+#  This is just for notes - WILL NOT CALL IN SCRIPT FOR TESTING. REBOOTS SERVER, BUT FOR TEST WE WANT SERVER DEPLOYED
+def kernel():
 		print('installing kernel')
 		os.system('yum -y clean all && yum update kernel -y && yum -y reboot')
-	def verifying_dirty_cow():
+def verifying_dirty_cow():
 		os.system('rpm -q --changelog kernel | grep CVE-2016-5195')
 	
 	"""
