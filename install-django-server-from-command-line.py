@@ -10,7 +10,7 @@ def install_apache():
        os.system('sudo systemctl enable httpd.service')
        print('starting apache server')
        os.system('sudo systemctl start httpd.service')
-       print('Check apache start page by entering server ip address in browser')
+       print('If you open the security settings for port 80 on your server, you should see the apache start page')
 install_apache()
 
 # Here the script installs the django server with python and virtualenv
