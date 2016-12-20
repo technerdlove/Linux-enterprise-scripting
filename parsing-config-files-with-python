@@ -1,0 +1,219 @@
+Here I complete the following assignment:
+
+This is a diff between the original apache configuration file and an apache configuration file configured for mod_wsgi.  
+What python commands could you use to complete this configuration in a script?  
+What are the prose and cons of simply storing a configuration file in github?
+
+
+PYTHON COMMANDS TO COMPLETE CONFIGURATION IN A SCRIPT:
+          [ec2-user@ip-172-31-60-103 conf]$ diff httpd.conf httpd.conf.orig
+
+          97,123d96
+
+          < # WSGI config
+
+          < WSGIScriptAlias "/" "/opt/django/project1/project1/wsgi.py"
+
+          < WSGIPythonPath "/opt/django/project1:/opt/django/django-env/lib/python2.7/site-packages"
+
+          < 
+
+          < 
+
+          < Alias /robots.txt /opt/django/project1/static/robots.txt
+
+          < #Alias /favicon.ico /path/to/mysite.com/static/favicon.ico
+
+          < 
+
+          < #Alias /media/ /path/to/mysite.com/media/
+
+          < Alias /static/ /opt/django/project1/static/
+
+          < #Alias /static /path/to/mysite.com/static/
+
+          < 
+
+          < <Directory /opt/django/project1/static >
+
+          < Require all granted
+
+          < </Directory>
+
+          < 
+
+          < <Directory /path/to/mysite.com/media>
+
+          < Require all granted
+
+          < </Directory>
+
+          < 
+
+          < <Directory /opt/django/project1/project1 >
+
+          < <Files wsgi.py >
+
+          < Require all granted
+
+          < </Files>
+
+          < </Directory>
+
+          < 
+
+          < 
+
+          129,132c102,105
+
+          < #<Directory />
+
+          < #    AllowOverride none
+
+          < #    Require all denied
+
+          < #</Directory>
+
+          ---
+
+          > <Directory />
+
+          >     AllowOverride none
+
+          >     Require all denied
+
+          > </Directory>
+
+          380c353
+
+          < #IncludeOptional conf.d/*.conf
+
+          ---
+
+          > IncludeOptional conf.d/*.conf
+          
+          
+
+          [ec2-user@ip-172-31-60-103 conf]$ diff httpd.conf httpd.conf.orig | more
+
+          97,123d96
+
+          < # WSGI config
+
+          < WSGIScriptAlias "/" "/opt/django/project1/project1/wsgi.py"
+
+          < WSGIPythonPath "/opt/django/project1:/opt/django/django-env/lib/python2.7/site-packages"
+
+          < 
+
+          < 
+
+          < Alias /robots.txt /opt/django/project1/static/robots.txt
+
+          < #Alias /favicon.ico /path/to/mysite.com/static/favicon.ico
+
+          < 
+
+          < #Alias /media/ /path/to/mysite.com/media/
+
+          < Alias /static/ /opt/django/project1/static/
+
+          < #Alias /static /path/to/mysite.com/static/
+
+          < 
+
+          < <Directory /opt/django/project1/static >
+
+          < Require all granted
+
+          < </Directory>
+
+          < 
+
+          < <Directory /path/to/mysite.com/media>
+
+          < Require all granted
+
+          < </Directory>
+
+          < 
+
+          < <Directory /opt/django/project1/project1 >
+
+          < <Files wsgi.py >
+
+          < Require all granted
+
+          < </Files>
+
+          < </Directory>
+
+          < 
+
+          < 
+
+          129,132c102,105
+
+          < #<Directory />
+
+          < #    AllowOverride none
+
+          < #    Require all denied
+
+          < #</Directory>
+
+          ---
+
+          > <Directory />
+
+          >     AllowOverride none
+
+          >     Require all denied
+
+          > </Directory>
+
+          380c353
+
+          < #IncludeOptional conf.d/*.conf
+
+          ---
+
+          > IncludeOptional conf.d/*.conf
+
+
+
+PROS AND CONS OF STOREING A CONFIGURATION FILE IN GITHUB
+I used the following link for info: http://volkanpaksoy.com/archive/2015/07/24/configuration-file-management-on-GitHub/
+
+PROS:
+Actual values are online and accessible.
+You can keep the sensitive parts of the config file confidential by placing it in another file inside a private repository.
+Here's how:
+  Maintain a private repository that contains the config files and add it to the git repository as a submodule.
+  (more info about submodules, including how to add to a repository, is here: https://github.com/blog/2104-working-with-submodules)
+  Link to that private configuration file in the application config file (app.config)
+  When the application cannot find the private config file (actual.config) it just uses the values in the app.config. 
+  When the actual.config is present, those values override the sample values.
+  For example, in a .NET config file:
+  
+    The config file (app.config):
+    <configuration>
+      <appSettings file="Actual.config">
+        <add key="Twilio.AccountSID" value="SAMPLE SID" />
+        <add key="Twilio.AuthToken" value="SAMPLE TOKEN" />
+        <add key="Non-sensitive-info" value="some value" />
+      </appSettings>
+  </configuration>
+  
+    The confidential parts of the config file in private repository (Actual.config):
+    <appSettings>
+      <add key="Twilio.AccountSID" value="REAL 123456" />
+      <add key="Twilio.AuthToken" value="REAL Token" />
+      <add key="Non-sensitive-info" value="some value" />
+  </appSettings>
+
+
+CONS:
+Requires a paid account for private repositories
+More complicated
+
