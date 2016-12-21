@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+sed -i 's/sudo //g' *
 import boto3
 import base64
 import pprint
